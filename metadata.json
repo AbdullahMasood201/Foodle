@@ -1,0 +1,6 @@
+{
+  "name": "Foodle - Homemade Cooked & Frozen Food",
+  "description": "Foodle offers homemade cooked food, frozen food, monthly meal options and desserts in Islamabad. Browse the menu and place your order through WhatsApp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
