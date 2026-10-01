@@ -2897,6 +2897,7 @@
       const timeSelect = document.getElementById('preferredTime');
       const customTimeGroup = document.getElementById('customTimeGroup');
       const customTimeInput = document.getElementById('customTimeInput');
+      if (!timeSelect || !customTimeGroup || !customTimeInput) return;
 
       if (timeSelect.value === 'Other / Custom Time') {
         customTimeGroup.style.display = 'flex';
@@ -2950,27 +2951,28 @@
       e.preventDefault();
 
       const form = document.getElementById('foodleOrderForm');
+      if (!form) return;
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
       }
 
-      const name = document.getElementById('customerName').value.trim();
-      const phone = document.getElementById('customerPhone').value.trim();
-      const email = document.getElementById('customerEmail').value.trim();
-      const foodType = document.getElementById('foodType').value;
-      const orderType = document.getElementById('orderType').value;
-      const quantity = document.getElementById('quantity').value.trim();
-      const preferredDate = document.getElementById('preferredDate').value;
+      const name = (document.getElementById('customerName')?.value || '').trim();
+      const phone = (document.getElementById('customerPhone')?.value || '').trim();
+      const email = (document.getElementById('customerEmail')?.value || '').trim();
+      const foodType = document.getElementById('foodType')?.value || 'Cooked Food';
+      const orderType = document.getElementById('orderType')?.value || 'Single Order';
+      const quantity = (document.getElementById('quantity')?.value || '').trim();
+      const preferredDate = document.getElementById('preferredDate')?.value || '';
       
-      let preferredTime = document.getElementById('preferredTime').value;
+      let preferredTime = document.getElementById('preferredTime')?.value || '';
       if (preferredTime === 'Other / Custom Time') {
-        const customTime = document.getElementById('customTimeInput').value.trim();
+        const customTime = (document.getElementById('customTimeInput')?.value || '').trim();
         preferredTime = customTime ? customTime : 'Other / Custom Time';
       }
 
-      const orderDetails = document.getElementById('orderDetails').value.trim();
-      const specialInstructions = document.getElementById('specialInstructions').value.trim();
+      const orderDetails = (document.getElementById('orderDetails')?.value || '').trim();
+      const specialInstructions = (document.getElementById('specialInstructions')?.value || '').trim();
 
       // Build structured message as specified in Section 21
       let message = 'Hello Foodle,\nI would like to place an order/reservation.\n\n';
